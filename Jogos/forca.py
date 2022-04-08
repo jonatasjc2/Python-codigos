@@ -45,7 +45,7 @@ def jogar():
                     
             else:
                 erros += 1
-                print("\nCuidado, você cometeu ",erros," erros meu amigo, se atingir 6 erros estará enforcado\n")
+                print("\nNúmero de erros cometidos: {}. Se atingir 6 erros estará enforcado\n".format(erros))
                  
             enforcou = erros == 6
             acertou = "_" not in letras_acertadas
@@ -53,9 +53,9 @@ def jogar():
 
 
     if(acertou):
-        print("Você ganhou!!\n")
+        print("\nVocê ganhou!!\n")
     else:
-        print("Você perdeu!!\n")
+        print("\nVocê perdeu!!\n")
     print("Fim do jogo")
 
 if(__name__ == "__main__"):
