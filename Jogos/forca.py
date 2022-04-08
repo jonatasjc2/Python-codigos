@@ -1,9 +1,9 @@
 import random
+
 def jogar():
     print("*********************************")
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
-    
     
     arquivo = open("palavras.txt","r")
     frutas = []
@@ -18,7 +18,7 @@ def jogar():
     
     palavra_secreta = frutas[numero_aleatorio].upper()
     letras_acertadas = ["_" for letra in palavra_secreta]
-
+   
     enforcou = False
     acertou = False
     erros = 0
@@ -29,25 +29,33 @@ def jogar():
 
         chute = input("Qual letra? ")
         chute = chute.strip().upper()
-
-        if(chute in palavra_secreta):
-            index = 0
-            for letra in palavra_secreta:
-                if(chute == letra):
-                    letras_acertadas[index] = letra
-                index += 1
-        else:
-            erros += 1
-
-        enforcou = erros == 6
-        acertou = "_" not in letras_acertadas
-        print(letras_acertadas)
+        
+        if(chute==palavra_secreta):
+            
+            print("\nParabéns a palavra é esta:",palavra_secreta,".Você ganhou\n")
+            acertou =True
+             
+        else:     
+            if(chute in palavra_secreta):
+                index = 0
+                for letra in palavra_secreta:
+                    if(chute == letra):
+                        letras_acertadas[index] = letra
+                    index += 1
+                    
+            else:
+                erros += 1
+                print("\nCuidado, você cometeu ",erros," erros meu amigo, se atingir 6 erros estará enforcado\n")
+                 
+            enforcou = erros == 6
+            acertou = "_" not in letras_acertadas
+            print(letras_acertadas)
 
 
     if(acertou):
-        print("Você ganhou!!")
+        print("Você ganhou!!\n")
     else:
-        print("Você perdeu!!")
+        print("Você perdeu!!\n")
     print("Fim do jogo")
 
 if(__name__ == "__main__"):
