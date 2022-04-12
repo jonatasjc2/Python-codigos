@@ -30,14 +30,13 @@ def jogar():
             else:
                 erros += 1
                 Funcoes_jogos.mistake_message(erros)
-            
-            '''estilo-do-jogo código abaixo alterado'''
+        
             enforcou = erros == 7
             acertou = "_" not in letras_acertadas
             print(letras_acertadas,"\n")
 
     if(acertou):
-        '''estilo-do-jogo código abaixo alterado'''
+      
         Funcoes_jogos.winner_message()
         
     if(enforcou):
