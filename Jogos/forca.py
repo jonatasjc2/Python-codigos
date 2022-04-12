@@ -1,52 +1,35 @@
-import random
 import Funcoes_jogos
 
 def jogar():
-    print("*********************************")
-    print("***Bem vindo ao jogo da Forca!***")
-    print("*********************************\n")
     
-    arquivo = open("palavras.txt","r")
-    frutas = []
+    Funcoes_jogos.welcome_to_forca()
     
-    for linha in arquivo:
-        linha = linha.strip()
-        frutas.append(linha)
-     
-    arquivo.close()
+    palavra_secreta = Funcoes_jogos.loading_secret_word()
     
-    numero_aleatorio = random.randrange(0,len(frutas))
-    
-    palavra_secreta = frutas[numero_aleatorio].upper()
     letras_acertadas = ["_" for letra in palavra_secreta]
+    print(letras_acertadas,"\n")
    
     enforcou = False
     acertou = False
     erros = 0
     
-    print(letras_acertadas,"\n")
-
     while(not enforcou and not acertou):
         
-        chute = input("\nQual letra? ")
-        chute = chute.strip().upper()
+        chute = Funcoes_jogos.guess()
         
         if(chute==palavra_secreta):
-            
-            print("\nParabéns a palavra é esta:",palavra_secreta)
-            acertou =True
+    
+           Funcoes_jogos.right_word(palavra_secreta)
+           acertou =True
              
         else:     
             if(chute in palavra_secreta):
-                index = 0
-                for letra in palavra_secreta:
-                    if(chute == letra):
-                        letras_acertadas[index] = letra
-                    index += 1
-                    
+                
+                Funcoes_jogos.guess_verification(letras_acertadas,chute,palavra_secreta)
+                         
             else:
                 erros += 1
-                print("\nNúmero de erros cometidos: {}. Se atingir 6 erros estará enforcado\n".format(erros))
+                Funcoes_jogos.mistake_message(erros)
                  
             enforcou = erros == 6
             acertou = "_" not in letras_acertadas
@@ -54,8 +37,10 @@ def jogar():
 
     if(acertou):
         print("\nVocê ganhou!!\n")
+        
     if(enforcou):
-        print("\nVocê perdeu!!\nA palavra era {}.".format(palavra_secreta))
+        Funcoes_jogos.enforcou(palavra_secreta)
+        
     print("\nFim do jogo")
 
 if(__name__ == "__main__"):
