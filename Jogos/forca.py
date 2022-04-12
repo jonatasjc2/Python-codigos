@@ -26,13 +26,13 @@ def jogar():
     print(letras_acertadas)
 
     while(not enforcou and not acertou):
-
-        chute = input("Qual letra? ")
+        
+        chute = input("\nQual letra? ")
         chute = chute.strip().upper()
         
         if(chute==palavra_secreta):
             
-            print("\nParabéns a palavra é esta:",palavra_secreta,".Você ganhou\n")
+            print("\nParabéns a palavra é esta:",palavra_secreta)
             acertou =True
              
         else:     
@@ -49,14 +49,13 @@ def jogar():
                  
             enforcou = erros == 6
             acertou = "_" not in letras_acertadas
-            print(letras_acertadas)
-
+            print(letras_acertadas,"\n")
 
     if(acertou):
         print("\nVocê ganhou!!\n")
-    else:
-        print("\nVocê perdeu!!\n")
-    print("Fim do jogo")
+    if(enforcou):
+        print("\nVocê perdeu!!\nA palavra era {}.".format(palavra_secreta))
+    print("\nFim do jogo")
 
 if(__name__ == "__main__"):
     jogar()
