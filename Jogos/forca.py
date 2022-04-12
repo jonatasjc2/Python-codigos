@@ -1,4 +1,6 @@
 import random
+import Funcoes_jogos
+
 def jogar():
     print("*********************************")
     print("***Bem vindo ao jogo da Forca!***")
