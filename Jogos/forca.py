@@ -1,5 +1,5 @@
 import random
-
+'''isto é um comentario'''
 def jogar():
     print("*********************************")
     print("***Bem vindo ao jogo da Forca!***")
