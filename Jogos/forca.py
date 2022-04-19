@@ -1,7 +1,7 @@
 import Funcoes_jogos
 
 def jogar():
-    
+    '''Fase 02 finalizada'''
     Funcoes_jogos.welcome_to_forca()
     
     palavra_secreta = Funcoes_jogos.loading_secret_word()
