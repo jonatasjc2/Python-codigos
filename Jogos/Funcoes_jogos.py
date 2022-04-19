@@ -4,6 +4,21 @@ import adivinhacao
 
 '''aqui começa as funções do jogo da forca'''
 
+def loading_file_animais():
+    arquivo = open("animais.txt","r")
+    animais = []
+    
+    for linha in arquivo:
+        linha = linha.strip()
+        animais.append(linha)
+     
+    arquivo.close()
+    
+    numero_aleatorio = random.randrange(0,len(animais))
+    
+    secret_word = animais[numero_aleatorio].upper()
+    return secret_word
+
 def loading_file_paises():
     arquivo = open("paises.txt","r")
     paises = []
@@ -41,7 +56,7 @@ def welcome_to_forca():
 
 def pull_the_options():
     print("\nEscolha o assunto que te interessa\n")
-    print("(1) Frutas\n(2) Paises\n")
+    print("(1) Frutas\n(2) Paises\n(3) Animais\n")
     options = (input("\nQual é a sua escolha: "))
     options = int(options)
     return options
@@ -57,6 +72,10 @@ def loading_secret_word():
         
         elif(options == 2):
             secret_word = loading_file_paises()
+            break
+        
+        elif(options == 3):
+            secret_word = loading_file_animais()
             break
         else:
             print("\nPreste atenção!Você deve escolher uma alternativa valida\n")
